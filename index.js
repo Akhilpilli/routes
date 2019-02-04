@@ -8,12 +8,11 @@ var bodyParser = require('body-parser');
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-var Data;
 
 app.post('/prime', function(req, res) {
  	var Number = parseInt(req.body.number1);
-	Data=JSON.parse(prime(Number));
-	res.json(Data);
+	var ResponsData = JSON.parse(prime(Number));
+	res.json(ResponsData);
 
 });
 
@@ -44,17 +43,17 @@ app.post('/sum', function(req, res){
 	var FirstNumber = parseInt(req.body.number1);
 	var SecondNumber = parseInt(req.body.number2);
 	var Sum = FirstNumber + SecondNumber;
-	Data = {"Sum" : Sum};
-	res.json(Data);
+	var ResponsData = {"Sum" : Sum};
+	res.json(ResponsData);
 });
 
 app.post('/naturalnumbers', function(req,res){
 	var Number = parseInt(req.body.number2);
-	var NaturalNumber = [];
-	NaturalNumber = nNaturalNumbers(Number);
-	NaturalNumber.length = Number;
-	Data = {"naturalnumber" : NaturalNumber};
-	res.json(Data);
+	var NaturalNumbers = [];
+	NaturalNumbers = nNaturalNumbers(Number);
+	NaturalNumbers.length = Number;
+	var ResponsData = {"naturalnumber" : NaturalNumbers};
+	res.json(ResponsData);
 });
 
 function nNaturalNumbers(Count){
